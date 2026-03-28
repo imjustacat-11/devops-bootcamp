@@ -6,9 +6,13 @@ def greet_user(name):
 def calculate_sum(a, b):
     return a + b
 
-def execute_query(db_name, query):
-    db_username, db_password = get_secretvalue()
-    
+def get_secretvalue():
+    secret_name = secrets_manager.get_secret_value(SecretId='YOUR_SECRET_ARN')
+    secret_dict = json.loads(secret_name['SecretString'])
+    db_username = secret_dict['username']
+    db_password = secret_dict['password']
+    return db_username, db_password 
+
 def main():
     # Taking user input
     name = input("Enter your name: ")
