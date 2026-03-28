@@ -6,6 +6,9 @@ def greet_user(name):
 def calculate_sum(a, b):
     return a + b
 
+def execute_query(db_name, query):
+    db_username, db_password = get_secretvalue()
+    
 def main():
     # Taking user input
     name = input("Enter your name: ")
